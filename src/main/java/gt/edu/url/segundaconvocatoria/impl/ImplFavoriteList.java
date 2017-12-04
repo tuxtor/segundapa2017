@@ -73,8 +73,9 @@ public class ImplFavoriteList<E> implements FavoriteList<E> {
 
     @Override
     public void remove(E e) {
-        Position<Item<E>> p = findPosition(e); if (p != null)
-        list.remove(p);
+        Position<Item<E>> p = findPosition(e);
+        if (p != null)
+            list.remove(p);
     }
 
     @Override
@@ -85,12 +86,12 @@ public class ImplFavoriteList<E> implements FavoriteList<E> {
         
         Position<Item<E>> firstElement = list.first();
 
-        result.set(0, firstElement.getElement().getValue());
+        result.add(0, firstElement.getElement().getValue());
         
         for (int j=1; j < k; j++){
             // = list
             Position<Item<E>> pivot = list.after(firstElement);
-            result.add(j, pivot.getElement().getValue());
+            result.add(0, pivot.getElement().getValue());
         }
         return result;
     }
